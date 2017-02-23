@@ -10,16 +10,22 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_arith.all;
 use IEEE.std_logic_unsigned.all;
 
--- see figure 3-1 pg. 15 spartan 3 manual.
-entity LEDDisplay is
-  port(A, B, C, D, E, F, G, DP : in std_logic);
-  
-  
+entity LEDDisplay is -- complete entity description
+  port(counter : in std_logic_vector(2 downto 0);
+       Sum : in std_logic_vector(3 downto 0);
+       Cout : out std_logic;
+       segment_a : out std_logic;
+       segment_b : out std_logic;
+       segment_c : out std_logic;
+       segment_d : out std_logic;
+       segment_e : out std_logic;
+       segment_f : out std_logic;
+       segment_g : out std_logic);
 end LEDDisplay;
 
 architecture Behav of LEDDisplay is
 
-  component dec_7seg 
+  component dec_7seg -- complete component description
     port(hex_digit : in std_logic_vector(3 downto 0);
          segment_a, segment_b, segment_c, segment_d, segment_e, segment_f, segment_g : OUT std_logic);
   end component;
@@ -46,15 +52,15 @@ begin
         segment_g <= segment_g1;
 --	when "1101" =>
       when "010" =>		--complete portion of code
-        _____________________
-          _____________________
-          _____________________
-          _____________________
-          _____________________
-          _____________________
-          _____________________
+        segment_a <= segment_a2;
+        segment_b <= segment_b2;
+        segment_c <= segment_c2;
+        segment_d <= segment_d2;
+        segment_e <= segment_e2;
+        segment_f <= segment_f2;
+        segment_g <= segment_g2;
 --	when "1011" =>
-          when "100" =>
+      when "100" =>
         segment_a <= '1';
         segment_b <= '1';
         segment_c <= '1';
@@ -82,7 +88,7 @@ begin
     end case;
   end process;
 
-  LED_Display1: 	dec_7seg  port map (Sum, segment_a1, segment_b1, segment_c1, segment_d1, segment_e1, segment_f1, segment_g1);
-  LED_Display2: 	dec_7seg  port map (Co, segment_a2, segment_b2, segment_c2, segment_d2, segment_e2, segment_f2, segment_g2);
+  LED_Display1: dec_7seg  port map (Sum, segment_a1, segment_b1, segment_c1, segment_d1, segment_e1, segment_f1, segment_g1);
+  LED_Display2: dec_7seg  port map (Co, segment_a2, segment_b2, segment_c2, segment_d2, segment_e2, segment_f2, segment_g2);
 
 end Behav;
