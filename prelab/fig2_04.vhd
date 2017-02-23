@@ -19,8 +19,8 @@ end Adder4;
 
 architecture Structure of Adder4 is
   component FullAdder
-    port(A, B, Ci : in std_logic;
-         Co, S    : out std_logic);
+    port(X, Y, Cin : in std_logic;
+         Cout, Sum    : out std_logic);
   end component;
 
   signal C: std_logic_vector(3 downto 1);

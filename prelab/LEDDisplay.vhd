@@ -13,7 +13,7 @@ use IEEE.std_logic_unsigned.all;
 entity LEDDisplay is -- complete entity description
   port(counter : in std_logic_vector(2 downto 0);
        Sum : in std_logic_vector(3 downto 0);
-       Cout : out std_logic;
+       Cout : in std_logic;
        segment_a : out std_logic;
        segment_b : out std_logic;
        segment_c : out std_logic;

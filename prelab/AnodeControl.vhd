@@ -35,7 +35,7 @@ end process;
 
 process (counter_temp(0), clk)
 	begin
-	if ( clk'event and clock = '1' ) then	-- fill in with the expression for an event on clk
+	if ( clk'event and clk = '1' ) then	-- fill in with the expression for an event on clk
 		if (counter_temp = "000") then
 			Anode_temp <= "1110";
 		elsif (counter_temp = "010") then
@@ -45,7 +45,8 @@ process (counter_temp(0), clk)
 		elsif (counter_temp = "110") then
 			Anode_temp <= "0111";
 		else
-			Anode_temp <= Anode_temp;	--complete this portion of the code
+			--Anode_temp <= Anode_temp;	--complete this portion of the code
+			Anode_temp <= "1111";
 		end if;
 	end if;
 end process;
